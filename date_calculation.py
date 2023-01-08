@@ -26,12 +26,9 @@ def get_string_sub_date_month(date1:str, date2:str) -> str:
         month1 = datetime.datetime.strptime(date1, "%Y%m").month
         month2 = datetime.datetime.strptime(date2, "%Y%m").month
         months = (year2 - year1) * 12 + (month2 - month1) + 1
-        return months
+        return str(months)
     except ValueError:
         return 'ERROR'
-
-
-
 
 if __name__ == '__main__':
     print(get_string_sub_date_month('201512','201412'))
