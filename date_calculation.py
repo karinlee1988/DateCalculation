@@ -11,7 +11,8 @@
 
 import datetime
 
-def get_string_sub_date_month(date1:str, date2:str) -> str:
+
+def get_string_sub_date_month(date1: str, date2: str) -> str:
     """
     计算两个日期之间的社保缴费月数(日期为6位字符串格式yyyymm)
     :param date1: 日期1
@@ -20,7 +21,7 @@ def get_string_sub_date_month(date1:str, date2:str) -> str:
     """
     try:
         if int(date1) > int(date2):
-            date1,date2 = date2,date1
+            date1, date2 = date2, date1
         year1 = datetime.datetime.strptime(date1, "%Y%m").year
         year2 = datetime.datetime.strptime(date2, "%Y%m").year
         month1 = datetime.datetime.strptime(date1, "%Y%m").month
@@ -30,5 +31,6 @@ def get_string_sub_date_month(date1:str, date2:str) -> str:
     except ValueError:
         return 'ERROR'
 
+
 if __name__ == '__main__':
-    print(get_string_sub_date_month('201512','201412'))
+    print(get_string_sub_date_month('201512', '201412'))
