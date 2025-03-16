@@ -9,7 +9,13 @@
 # @gitee : https://gitee.com/karinlee/
 # @Personal website : https://karinlee.cn/
 
-import PySimpleGUI as sg
+import FreeSimpleGUI as sg
+# pysimplegui 在2024年升级到v5版本后已经收费了，且找不到之前4.X的版本
+# 所以有个大神做了一个 FreeSimpleGUI 库 以代替 PySimpleGUI
+# 更新方法：
+# - import PySimpleGUI as sg
+# + import FreeSimpleGUI as sg
+
 from date_calculation import get_string_sub_date_month
 
 class CalculationOfMonths(object):
@@ -17,8 +23,11 @@ class CalculationOfMonths(object):
     计算器可视化界面
     """
     def __init__(self):
-        # 设置pysimplegui主题，不设置的话就用默认主题
-        sg.ChangeLookAndFeel('Purple')
+        # 设置FreeSimpleGUI主题，不设置的话就用默认主题
+        # DeprecationWarning: ChangeLookAndFeel is deprecated. Use change_look_and_feel instead
+        # -sg.ChangeLookAndFeel('Purple')
+        sg.change_look_and_feel('Purple')
+
         # 定义2个常量，供下面的layout直接调用，就不用一个个元素来调字体了
         # 字体和字体大小
         self.FONT = ("微软雅黑", 16)
@@ -26,7 +35,7 @@ class CalculationOfMonths(object):
         self.SIZE = (10,1)
         # 界面布局
         self.layout = [
-            [sg.Text('  社保参保月数计算器by英德关系李加林',font=("微软雅黑", 12))],
+            [sg.Text('  社保参保月数计算器by英德社保李加林',font=("微软雅黑", 12))],
             [sg.Text('******************************', font=self.FONT)],
             # sg.Image()插入图片，支持gif和png
             [sg.Image(filename="images/peppa.png")],
